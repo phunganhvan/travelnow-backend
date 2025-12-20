@@ -1,0 +1,27 @@
+{
+  "name": "travelnow-backend",
+  "version": "1.0.0",
+  "description": "TravelNow backend API using Node.js, Express and MongoDB",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.16",
+    "cloudinary": "^1.41.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
