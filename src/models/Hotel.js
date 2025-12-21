@@ -26,7 +26,9 @@ const hotelSchema = new mongoose.Schema(
     imageUrl: { type: String },
     imageUrls: [{ type: String }],
     tags: [{ type: String }],
-    amenities: [{ type: String }]
+    amenities: [{ type: String }],
+    virtualTourUrl: { type: String }, // Link nhúng 3D Tour (Matterport, VR360, etc.)
+    panoramaUrl: { type: String } // Link ảnh toàn cảnh 360 độ
   },
   {
     timestamps: true
