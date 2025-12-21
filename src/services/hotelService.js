@@ -13,6 +13,13 @@ async function searchHotels({ destination, checkIn, checkOut, guests }) {
   return hotels;
 }
 
+async function getHotelById(id) {
+  if (!id) return null;
+  const hotel = await Hotel.findById(id).lean();
+  return hotel;
+}
+
 module.exports = {
-  searchHotels
+  searchHotels,
+  getHotelById
 };
