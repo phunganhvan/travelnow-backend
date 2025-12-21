@@ -22,7 +22,8 @@ async function registerUser({ fullName, email, password }) {
   return {
     id: user._id,
     fullName: user.fullName,
-    email: user.email
+    email: user.email,
+    role: user.role
   };
 }
 
@@ -42,7 +43,7 @@ async function loginUser({ email, password }) {
   }
 
   const token = jwt.sign(
-    { sub: user._id.toString(), email: user.email },
+    { sub: user._id.toString(), email: user.email, role: user.role },
     JWT_SECRET,
     { expiresIn: '7d' }
   );
@@ -52,7 +53,8 @@ async function loginUser({ email, password }) {
     user: {
       id: user._id,
       fullName: user.fullName,
-      email: user.email
+      email: user.email,
+      role: user.role
     }
   };
 }
@@ -189,7 +191,7 @@ async function changePassword(userId, { currentPassword, newPassword }) {
 
 async function getCurrentUser(userId) {
   const user = await User.findById(userId).select(
-    'fullName email phone address dateOfBirth avatarUrl notificationEmail notificationSms createdAt updatedAt'
+    'fullName email phone address dateOfBirth avatarUrl notificationEmail notificationSms role isActive createdAt updatedAt'
   );
 
   if (!user) {

@@ -40,6 +40,15 @@ const userSchema = new mongoose.Schema(
     notificationSms: {
       type: Boolean,
       default: false
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin', 'superadmin', 'manager', 'staff'],
+      default: 'user'
+    },
+    isActive: {
+      type: Boolean,
+      default: true
     }
   },
   { timestamps: true }

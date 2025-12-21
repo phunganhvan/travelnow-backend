@@ -13,7 +13,11 @@ function authMiddleware(req, res, next) {
 
   try {
     const payload = jwt.verify(token, JWT_SECRET);
-    req.user = { id: payload.sub, email: payload.email };
+    req.user = {
+      id: payload.sub,
+      email: payload.email,
+      role: payload.role || 'user'
+    };
     next();
   } catch (error) {
     console.error('Auth error:', error.message);
