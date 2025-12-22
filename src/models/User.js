@@ -46,6 +46,12 @@ const userSchema = new mongoose.Schema(
       enum: ['user', 'admin', 'superadmin', 'manager', 'staff'],
       default: 'user'
     },
+    status: {
+      type: String,
+      enum: ['active', 'locked'],
+      default: 'active',
+      index: true
+    },
     isActive: {
       type: Boolean,
       default: true

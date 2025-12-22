@@ -65,6 +65,7 @@ async function updateUser(req, res, next) {
       dateOfBirth,
       role,
       isActive,
+      status,
       password,
       avatarUrl,
       avatarDataUrl
@@ -92,7 +93,22 @@ async function updateUser(req, res, next) {
       }
       update.role = role;
     }
-    if (isActive !== undefined) update.isActive = isActive;
+    if (isActive !== undefined) {
+      update.isActive = isActive;
+      // Đồng bộ status nếu có isActive
+      if (status === undefined) {
+        update.status = isActive ? 'active' : 'locked';
+      }
+    }
+    if (status !== undefined) {
+      if (!['active', 'locked'].includes(status)) {
+        return res.status(400).json({ message: 'Trạng thái tài khoản không hợp lệ' });
+      }
+      update.status = status;
+      if (isActive === undefined) {
+        update.isActive = status === 'active';
+      }
+    }
     if (avatarUrl !== undefined) update.avatarUrl = avatarUrl;
 
     let uploadedAvatarUrl;

@@ -25,9 +25,11 @@ app.use(
   })
 );
 
-// Tăng giới hạn kích thước body để nhận ảnh base64 (avatar)
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// Tăng giới hạn kích thước body để nhận ảnh base64 (avatar, nhiều ảnh khách sạn)
+// Cân nhắc: nếu ảnh quá lớn, nên giới hạn kích thước file ở frontend
+// hoặc chuyển sang upload trực tiếp qua multipart/form-data.
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(morgan('dev'));
 
 // Health check / root

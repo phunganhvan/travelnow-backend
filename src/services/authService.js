@@ -35,6 +35,13 @@ async function loginUser({ email, password }) {
     throw error;
   }
 
+  // Không cho phép tài khoản bị khóa đăng nhập
+  if (user.status === 'locked' || user.isActive === false) {
+    const error = new Error('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.');
+    error.status = 403;
+    throw error;
+  }
+
   const isMatch = await bcrypt.compare(password, user.passwordHash);
   if (!isMatch) {
     const error = new Error('Email hoặc mật khẩu không đúng');
