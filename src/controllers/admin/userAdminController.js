@@ -38,6 +38,12 @@ async function createUser(req, res, next) {
       return res.status(400).json({ message: 'Vui lòng nhập đầy đủ họ tên, email và mật khẩu' });
     }
 
+    const allowedDomain = '@stu.ptit.edu.vn';
+
+    if (!email.toLowerCase().endsWith(allowedDomain)) {
+      return res.status(400).json({ message: 'Email không đúng định dạng, vui lòng tạo lại' });
+    }
+
     const existing = await User.findOne({ email });
     if (existing) {
       return res.status(400).json({ message: 'Email đã tồn tại' });

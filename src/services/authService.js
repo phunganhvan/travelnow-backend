@@ -9,6 +9,14 @@ const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-key';
 const RESET_PASSWORD_TOKEN_TTL_MINUTES = 10;
 
 async function registerUser({ fullName, email, password }) {
+  const allowedDomain = '@stu.ptit.edu.vn';
+
+  if (!email || !email.toLowerCase().endsWith(allowedDomain)) {
+    const error = new Error('Email không đúng định dạng, vui lòng tạo lại');
+    error.status = 400;
+    throw error;
+  }
+
   const existing = await User.findOne({ email });
   if (existing) {
     const error = new Error('Email đã tồn tại');

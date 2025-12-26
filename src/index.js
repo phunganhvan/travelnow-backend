@@ -8,6 +8,7 @@ const hotelRoutes = require('./routes/hotelRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const voucherRoutes = require('./routes/voucherRoutes');
 const chatRoutes = require('./routes/chatRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 const authMiddleware = require('./middlewares/authMiddleware');
 const adminRoutes = require('./routes/admin');
 
@@ -43,6 +44,7 @@ app.use('/hotels', hotelRoutes); // /hotels/search
 app.use('/bookings', bookingRoutes);
 app.use('/vouchers', voucherRoutes);
 app.use('/chat', chatRoutes);
+app.use('/analytics', analyticsRoutes);
 app.use('/admin', authMiddleware, adminRoutes);
 
 // Global error handler (simple)
