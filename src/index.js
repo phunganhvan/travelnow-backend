@@ -21,7 +21,7 @@ connectDB();
 // Middlewares
 app.use(
   cors({
-    origin: 'http://localhost:5173', // Vite dev server
+    origin: ['http://localhost:5173', 'https://your-frontend.vercel.app'], // Vite dev server
     credentials: true
   })
 );
@@ -58,3 +58,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+module.exports = app;
