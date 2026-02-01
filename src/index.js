@@ -21,7 +21,7 @@ connectDB();
 // Middlewares
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://travelnow-frontend-bqg7.vercel.app/'], // Vite dev server
+    origin: ['http://localhost:5173', 'https://travelnow-frontend-bqg7.vercel.app'], // Vite dev server
     credentials: true
   })
 );
@@ -55,7 +55,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server listening on port ${PORT}`);
+// });
 module.exports = app;
