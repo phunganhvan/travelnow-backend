@@ -21,7 +21,7 @@ connectDB();
 // Middlewares
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://travelnow-frontend-bqg7.vercel.app/'], // Vite dev server
+    origin: ['http://localhost:5173', 'https://travelnow-frontend-bqg7.vercel.app'], // Vite dev server
     credentials: true
   })
 );
